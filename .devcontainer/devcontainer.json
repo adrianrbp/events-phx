@@ -1,0 +1,46 @@
+{
+  "name": "Event Booking",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "shutdownAction": "stopCompose",
+  "workspaceFolder": "/workspace/event-booking",
+  // "remoteUser": "vscode",
+  "forwardPorts": [
+    4000
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "emmet.includeLanguages": {
+          "elixir": "html",
+          "phoenix-heex": "html"
+        },
+        "emmet.triggerExpansionOnTab": true,
+        "editor.formatOnSave": true,
+        "[elixir]": {
+          "editor.defaultFormatter": "JakeBecker.elixir-ls"
+        },
+        "elixirLS.mixEnv": "dev",
+        "elixirLS.projectDir": "events",
+        "elixirLS.dialyzerEnabled": false,
+        "tailwindCSS.includeLanguages": {
+          "elixir": "html",
+          "phoenix-heex": "html"
+        },
+        "tailwindCSS.emmetCompletions": true
+      },
+      "extensions": [
+        "jakebecker.elixir-ls",
+        "florinpatrascu.vscode-elixir-snippets",
+        "phoenixframework.phoenix",
+        "bradlc.vscode-tailwindcss",
+        "waderyan.gitblame",
+        "eamodio.gitlens",
+        "IBM.output-colorizer",
+        "usernamehw.errorlens",
+        "iliazeus.vscode-ansi",
+        "pkief.material-icon-theme"
+      ]
+    }
+  }
+}
