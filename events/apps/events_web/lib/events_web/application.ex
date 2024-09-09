@@ -1,4 +1,4 @@
-defmodule Events.Application do
+defmodule EventsWeb.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -7,21 +7,17 @@ defmodule Events.Application do
 
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      Events.Repo,
       # Start the Telemetry supervisor
       EventsWeb.Telemetry,
-      # Start the PubSub system
-      {Phoenix.PubSub, name: Events.PubSub},
       # Start the Endpoint (http/https)
       EventsWeb.Endpoint
-      # Start a worker by calling: Events.Worker.start_link(arg)
-      # {Events.Worker, arg}
+      # Start a worker by calling: EventsWeb.Worker.start_link(arg)
+      # {EventsWeb.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Events.Supervisor]
+    opts = [strategy: :one_for_one, name: EventsWeb.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
