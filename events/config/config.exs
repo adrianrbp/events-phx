@@ -1,22 +1,29 @@
-# This file is responsible for configuring your application
-# and its dependencies with the aid of the Mix.Config module.
+# This file is responsible for configuring your umbrella
+# and **all applications** and their dependencies with the
+# help of Mix.Config.
 #
-# This configuration file is loaded before any dependency and
-# is restricted to this project.
-
-# General application configuration
+# Note that all applications in your umbrella share the
+# same configuration and dependencies, which is why they
+# all use the same configuration file. If you want different
+# configurations or dependencies per app, it is best to
+# move said applications out of the umbrella.
 import Config
 
+# Configure Mix tasks and generators
 config :events,
   ecto_repos: [Events.Repo]
 
+config :events_web,
+  ecto_repos: [Events.Repo],
+  generators: [context_app: :events]
+
 # Configures the endpoint
-config :events, EventsWeb.Endpoint,
+config :events_web, EventsWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "/sJKfVN55c3XdlpU6Ty92U9HXeFEIbUhJceEIabbgcGxn3y95Vmk/RRyujKGVhUk",
+  secret_key_base: "Z6Rtq9H4wsjGbuV1ACZ6uZxMSCFOsAgY18o/ZeK9hOSx7X5vRPgBDC0N2uKvYc7W",
   render_errors: [view: EventsWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Events.PubSub,
-  live_view: [signing_salt: "OooWXVV7"]
+  live_view: [signing_salt: "FxOpce5X"]
 
 # Configures Elixir's Logger
 config :logger, :console,

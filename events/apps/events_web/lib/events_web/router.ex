@@ -2,23 +2,23 @@ defmodule EventsWeb.Router do
   use EventsWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/", EventsWeb do
-    pipe_through :browser
+    pipe_through(:browser)
 
-    get "/users", UserController, :index
-    get "/users/:id", UserController, :show
-    get "/", PageController, :index
+    get("/users", UserController, :index)
+    get("/users/:id", UserController, :show)
+    get("/", PageController, :index)
   end
 
   # Other scopes may use custom stacks.
@@ -37,8 +37,8 @@ defmodule EventsWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
-      pipe_through :browser
-      live_dashboard "/dashboard", metrics: EventsWeb.Telemetry
+      pipe_through(:browser)
+      live_dashboard("/dashboard", metrics: EventsWeb.Telemetry)
     end
   end
 end
